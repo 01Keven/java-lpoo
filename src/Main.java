@@ -1,11 +1,13 @@
 import java.util.Scanner;
 
 
-public class Main {
+public class Main{
     public static void main(String[] args) {
         Guerreiro guerreiro = new Guerreiro("Keven", 2, 15, 0, 14, 6);
+        Arma arma = new Arma("Besta", 8, 3);
         
         Mago mago = new Mago("Fernanda", 2, 8, 6, 10, 8);
+        Arma arma2 = new Arma("Arco", 5, 5);
 
         Scanner scanner = new Scanner(System.in);
 
@@ -23,18 +25,23 @@ public class Main {
             OUTER:
             switch (opcao) {
                 case 1 -> {
-                    System.out.println(">Atributos do Guerreiro<");
+                    System.out.println("======= Atributos do Guerreiro =======");
                     System.out.println("Nome: " + guerreiro.getNome());
                     System.out.println("Nível: " + guerreiro.getNivel());
                     System.out.println("Vida: " + guerreiro.getVida());
                     System.out.println("Mana: " + guerreiro.getMana());
                     System.out.println("Defesa: " + guerreiro.getDefesa());
-                    System.out.println("Dano: " + guerreiro.getDano());
+                    System.out.println("Dano natural: " + guerreiro.getDano());
+                    System.out.println("======= Inventario =======");
+                    System.out.println("Arma: " + arma.getNome());
+                    System.out.println("Munição: " + arma.getMunicao());
+                    System.out.println("Dano da Arma: " + arma.getDano());
 
                     // Menu de level up e dano
                     System.err.println("Escolha uma opção");
                     System.err.println("1. LEVEL UP");
                     System.err.println("2. tomar DANO");
+                    System.err.println("3. atirar com arma");
                     System.err.println("0. retornar ao MENU");
 
                     opcao = scanner.nextInt();
@@ -50,10 +57,14 @@ public class Main {
                             System.out.println("Voce tomou dano!");
                             break OUTER;
                     }
+                        case 3 -> {
+                            arma.Atirar();
+                            System.out.println("Atirando");
+                    }
                         case 0 -> {
                             System.out.println("Retornando ao MENU...");
                             break;
-                        }
+                    }
                         default -> {
                             System.out.println("Opção invalida! Tente de novo...");
                     }
@@ -61,18 +72,24 @@ public class Main {
                     
                 }
                 case 2 -> {
-                    System.out.println(">Atributos do Mago<");
+                    System.out.println("======= Atributos do Mago =======");
                     System.out.println("Nome: " + mago.getNome());
                     System.out.println("Nível: " + mago.getNivel());
                     System.out.println("Vida: " + mago.getVida());
                     System.out.println("Mana: " + mago.getDefesa());
                     System.out.println("Dano: " + mago.getDano());
+                    System.out.println("======= Inventario =======");
+                    System.out.println("Arma: " + arma2.getNome());
+                    System.out.println("Munição: " + arma2.getMunicao());
+                    System.out.println("Dano da Arma: " + arma2.getDano());
+
                     System.out.print("Digite a opção -> ");
                     
                     // Menu de level up e dano
                     System.err.println("Escolha uma opção");
                     System.err.println("1. LEVEL UP!!!!");
                     System.err.println("2. tomar DANO");
+                    System.err.println("3. atirar com arma");
                     System.err.println("0. retornar ao MENU");
                     
                     opcao = scanner.nextInt();
@@ -87,6 +104,10 @@ public class Main {
                             mago.SofrerDano(5);
                             System.out.println("Voce tomou dano!");
                             break OUTER;
+                    }
+                        case 3 -> {
+                            arma2.Atirar();
+                            System.out.println("Atirando");
                     }
                         case 0 -> {
                             System.out.println("Retornando ao MENU...");
